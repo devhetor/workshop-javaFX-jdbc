@@ -12,9 +12,9 @@ public class Seller implements Serializable {
 	private String email;
 	private Date birthDate;
 	private Double baseSalary;
-	
+
 	private Department department;
-	
+
 	public Seller() {
 	}
 
@@ -87,9 +87,7 @@ public class Seller implements Serializable {
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
+		if ((obj == null) || (getClass() != obj.getClass()))
 			return false;
 		Seller other = (Seller) obj;
 		if (id == null) {

@@ -17,11 +17,11 @@ import model.entities.Department;
 public class DepartmentDaoJDBC implements DepartmentDao {
 
 	private Connection conn;
-	
+
 	public DepartmentDaoJDBC(Connection conn) {
 		this.conn = conn;
 	}
-	
+
 	@Override
 	public Department findById(Integer id) {
 		PreparedStatement st = null;
@@ -84,13 +84,13 @@ public class DepartmentDaoJDBC implements DepartmentDao {
 				"INSERT INTO department " +
 				"(Name) " +
 				"VALUES " +
-				"(?)", 
+				"(?)",
 				Statement.RETURN_GENERATED_KEYS);
 
 			st.setString(1, obj.getName());
 
 			int rowsAffected = st.executeUpdate();
-			
+
 			if (rowsAffected > 0) {
 				ResultSet rs = st.getGeneratedKeys();
 				if (rs.next()) {
@@ -104,7 +104,7 @@ public class DepartmentDaoJDBC implements DepartmentDao {
 		}
 		catch (SQLException e) {
 			throw new DbException(e.getMessage());
-		} 
+		}
 		finally {
 			DB.closeStatement(st);
 		}
@@ -126,7 +126,7 @@ public class DepartmentDaoJDBC implements DepartmentDao {
 		}
 		catch (SQLException e) {
 			throw new DbException(e.getMessage());
-		} 
+		}
 		finally {
 			DB.closeStatement(st);
 		}
@@ -145,7 +145,7 @@ public class DepartmentDaoJDBC implements DepartmentDao {
 		}
 		catch (SQLException e) {
 			throw new DbIntegrityException(e.getMessage());
-		} 
+		}
 		finally {
 			DB.closeStatement(st);
 		}
